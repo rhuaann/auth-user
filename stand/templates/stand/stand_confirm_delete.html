@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Cadastro de Stands
+{% endblock %}
+
+{% block content %}
+  <div class="mt-5">
+    <form method="post">
+      <section class="form container-fluid p-5x">
+      {% csrf_token %}
+        <p> Você tem certeza que quer deletar o stand "{{ object.localizacao }}"?</p>
+        {{ form }}
+    </section>
+    <div>
+      <button style='color:white' type="submit" class="btn btn-primary">Sim</button>
+      <a style='color:white' class="btn btn-primary" href="{% url 'stand_listar' %}">Não</a>
+    </div>
+      
+    </form>
+  </div>
+{% endblock %}

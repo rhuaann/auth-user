@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Cadastro de Stands
+{% endblock %}
+
+{% block content %}
+  <div class="mt-5">
+    <h2>Formulário para Cadastro de Stands</h2>
+    <form method="post">
+      {% csrf_token %}
+      <div class="row mt-2 col-12 mb-2 ">
+        <div class='col-6'>
+          <div class="form-group">
+            <label for="nome" class='mb-0'><strong>Localização</strong></label>
+            <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{ form.localizacao }}</div>
+          </div>
+        </div>
+    
+        <div class='col-6'>
+          <div class="form-group">
+            <label for="nome" class='mb-0'><strong>Valor</strong></label>
+            <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{ form.valor }}</div>
+          </div>
+        </div>
+      </div>
+      <button style='color:white' type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </div>
+{% endblock %}

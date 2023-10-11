@@ -1,0 +1,18 @@
+{% for message in messages %}
+  <script>
+  function recarregarAPagina(){
+      window.location.reload();
+  } 
+  </script>
+  <div class="container br-message {{ message.tags }} d-flex justify-content-between" id='mensagem' role="alert">
+    <div class="content d-flex">
+      <div class="icon m-2">
+        <i style='color:#7E121D' class="fas fa-check-circle fa-lg" aria-hidden="true"></i>
+      </div>
+      <div class="message-body m-2">
+        <p>{{ message|safe }}</p>
+      </div>
+    </div>
+    <button onclick="recarregarAPagina()" style='color:white; border-radius: 30px;' class="btn btn-primary mt-0 mb-4 pl-2" type="button" aria-label="Fechar"><i class="fas fa-times" aria-hidden="true"></i></button>
+  </div>
+{% endfor %}
