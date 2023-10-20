@@ -16,7 +16,6 @@
         <thead class="thead-light">
             <tr>
                 <th scope="col">Localização</th>
-                <th scope="col">Valor</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>
@@ -24,7 +23,6 @@
             {% for object in object_list %}
             <tr>
                 <td>{{object.localizacao}}</td>
-                <td>{{object.valor}}</td>
                 <td>
                     <a href="{% url 'stand_editar' pk=object.pk %}"><i class="fas fa-edit"></i></a>
                     <a href="{% url 'stand_remover' pk=object.pk %}"><i class="fas fa-trash-alt"></i></a>

@@ -3,17 +3,9 @@
 {% block content %}
 
 <div class="row col-12 d-flex justify-content-center mt-5" style="padding-left: 100px;padding-right: 100px;">
-  <h2>Reservas</h2>
+  <h2>{{ object.nome_empresa }}</h2>
   <hr>
   <div class="row col-12 mt-5 d-flex justify-content-center">
-    <div class="col-6">
-      <div>
-        <strong style="">Nome da Empresa:</strong>
-        <p class="">{{ object.nome_empresa }}</p>
-        <hr style="font-size: 40px;" />
-      </div>
-    </div>
-
     <div class="col-6">
       <div>
         <strong style="">CNPJ:</strong>
@@ -21,17 +13,17 @@
         <hr style="font-size: 40px;" />
       </div>
     </div>
-  </div>
 
-  <div class="row col-12 mt-5 d-flex justify-content-center">
-    <div class="col-6">
+    <div class="col-6 text-end">
       <div>
         <strong style="">Categoria da Empresa:</strong>
         <p class="">{{ object.categoria_empresa }}</p>
         <hr style="font-size: 40px;" />
       </div>
     </div>
+  </div>
 
+  <div class="row col-12 mt-5 d-flex justify-content-center">
     <div class="col-6">
       <div>
         <strong style="">Status:</strong>
@@ -47,18 +39,15 @@
         <hr style="font-size: 40px;" />
       </div>
     </div>
-
-    
-  </div>
-
-  <div  class="row col-12 mt-5 d-flex justify-content-center">
-    <div class="col-6">
+   
+    <div class="col-6 text-end">
       <div>
         <strong style="">Stand:</strong>
         <p class="">{{ object.stand }}</p>
         <hr style="font-size: 40px;" />
       </div>
     </div>
+    
   </div>
 
   <div class="d-flex justify-content-around mt-5">
