@@ -4,7 +4,13 @@
 
 {% block content %}
 <div class="mt-5">
-    <h2>Lista de Stands</h2>
+    <div class="d-flex align-items-center justify-content-between">
+        <h2>Lista de Stands</h2>
+        <div class="">
+            <a style='color:white; border-radius: 50px; font-size: 12px;' href="{% url 'stand_criar' %}" class="btn btn-primary"><strong><i class="fas fa-plus"></i> ADICIONAR</strong></a>
+        </div>
+    </div>
+    
 
     <table class="table">
         <thead class="thead-light">
@@ -88,9 +94,5 @@
     {% endif %}
     
     <span class="br-divider my-3"></span>
-
-    <div class="mb-3">
-        <a style='color:white' href="{% url 'stand_criar' %}" class="btn btn-primary">Adicionar Novo</a>
-    </div>
 </div>
 {% endblock %}

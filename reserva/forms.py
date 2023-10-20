@@ -29,28 +29,30 @@ class ReservaForm(forms.ModelForm):
 
     cnpj = forms.CharField(
         widget=forms.TextInput(attrs={
-            "class": "form-control",
-            "placeholder": "CNPJ da Empresa",
+            "class": "form-control cnpj",
+            # "placeholder": "CNPJ da Empresa",
         })
     )
     nome_empresa = forms.CharField(
         widget=forms.TextInput(attrs={
             "class": "form-control",
-            "placeholder": "Nome da Empresa",
+            # "placeholder": "Nome da Empresa",
         })
     )
 
     categoria_empresa = forms.CharField(
         widget=forms.TextInput(attrs={
             "class": "form-control",
-            "placeholder": "Categoria da Empresa",
+            # "placeholder": "Categoria da Empresa",
         })
     )
 
     quitado = forms.BooleanField(
         required=False,
         widget=forms.CheckboxInput(attrs={
-            "class": "form-check",
+            "class": "form-check-input",
+            "style":"width: 25px; height: 25px",
+            "type":"radio",
         })
     )
     stand = forms.ModelChoiceField(
@@ -61,6 +63,10 @@ class ReservaForm(forms.ModelForm):
             "class": "form-select",
         })
     )
+
+    def clean_valor(self):
+        valor = self.cleaned_data["valor"]
+        return Decimal(valor.replace(",", "."))
 
     class Meta:
         model = Reserva

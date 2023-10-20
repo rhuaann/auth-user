@@ -10,13 +10,11 @@ class StandForm(forms.ModelForm):
     localizacao = forms.CharField(
         widget=forms.TextInput(attrs={
             "class": "form-control",
-            "placeholder": "Localização do stand",
         })
     )
     valor = forms.CharField(
         widget=forms.TextInput(attrs={
             "class": "money form-control",
-            "placeholder": "Valor do stand",
         })
     )
 
