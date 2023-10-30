@@ -1,39 +1,35 @@
 {% extends 'base.html' %}
 
-{% block title %}
-  Cadastro de Stands
-{% endblock %}
-
 {% block content %}
-  <div class="mt-5" style="padding-left: 100px;padding-right: 100px;">
-    <h2>Stands</h2>
-    <hr>
-    <form method="post" >
-      {% csrf_token %}
-      <div class="container">
-      
-        <div class="row mt-2 col-12 ">
-          <div class='col-6'>
-            <div class="form-group">
-              <label for="nome" class='mb-0'><strong>Localização</strong></label>
-              <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{ form.localizacao }}</div>
-            </div>
+<div class="mt-5" style="padding-left: 100px;padding-right: 100px;">
+  <h2>Stands</h2>
+  <hr>
+  <form method="post" >
+    {% csrf_token %}
+    <div class="container">
+    
+      <div class="row mt-2 col-12 ">
+        <div class='col-6'>
+          <div class="form-group">
+            <label for="nome" class='mb-0'><strong>Localização</strong></label>
+            <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{ form.localizacao }}</div>
           </div>
-      
-          <div class='col-6'>
-            <div class="form-group">
-              <label for="nome" class='mb-0'><strong>Valor do Stand</strong></label>
-              <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{ form.valor }}
-              </div>
+        </div>
+    
+        <div class='col-6'>
+          <div class="form-group">
+            <label for="nome" class='mb-0'><strong>Valor do Stand</strong></label>
+            <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{ form.valor }}
             </div>
           </div>
         </div>
       </div>
-        
-      <div class="d-flex justify-content-center mt-5">
-        <button style='color:white; border-radius: 50px; width: 200px; ' type="submit" class="btn btn-primary"><STRONG>ENVIAR</STRONG></button>
-      </div>
+    </div>
       
-    </form>
-  </div>
+    <div class="d-flex justify-content-center mt-5">
+      <button style='color:white; border-radius: 50px; width: 200px; ' type="submit" class="btn btn-primary"><STRONG>ENVIAR</STRONG></button>
+    </div>
+    
+  </form>
+</div>
 {% endblock %}

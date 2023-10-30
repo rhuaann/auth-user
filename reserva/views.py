@@ -10,7 +10,7 @@ from .models import Reserva
 
 class ReservasListView(AdminPermission,LoginRequiredMixin, generic.ListView):
     model = Reserva
-    paginate_by=2
+    paginate_by=5
     template_name = "reserva/reservas.html"
 
 class ReservaDetailView(AdminPermission,LoginRequiredMixin, generic.DetailView):
