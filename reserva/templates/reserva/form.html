@@ -5,52 +5,61 @@
 {% endblock %}
 
 {% block content %}
-  <div class="mt-5">
-    <h2>Formulário para Cadastro de Reservas</h2>
-    <form method="post">
+
+  <div class="mt-5" style="padding-left: 100px;padding-right: 100px;">
+    <h2>Reservas</h2>
+    <hr>
+    <form method="post" >
       {% csrf_token %}
-        <div class="row col-12 mb-2 mt-2">
-          <div class='col-12'>
+      <div class="container">
+      
+        <div class="row mt-2 col-12 ">
+          <div class='col-6'>
             <div class="form-group">
               <label for="nome" class='mb-0'><strong>Nome da Empresa</strong></label>
               <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{ form.nome_empresa }}</div>
+            </div>
+          </div>
+      
+          <div class='col-6'>
+            <div class="form-group">
+              <label for="nome" class='mb-0'><strong>CNPJ</strong></label>
+              <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{ form.cnpj_empresa }}
+              </div>
             </div>
           </div>
         </div>
         <div class="row mt-2 col-12 ">
           <div class='col-6'>
             <div class="form-group">
-              <label for="nome" class='mb-0'><strong>CNPJ</strong></label>
-              <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{ form.cnpj }}</div>
+              <label for="nome" class='mb-0'><strong>Categoria da Empresa</strong></label>
+              <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{ form.categoria_empresa }}</div>
             </div>
           </div>
       
           <div class='col-6'>
             <div class="form-group">
-              <label for="nome" class='mb-0'><strong>Categoria da Empresa</strong></label>
-              <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{ form.categoria_empresa }}
+              <label for="nome" class='mb-0'><strong>Stand</strong></label>
+              <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{ form.stand }}
               </div>
             </div>
           </div>
         </div>
   
         <div class="row mt-2 col-12 ">
-          <div class='col-1'>
+          <div class='col-12'>
             <div class="form-group">
-              <label for="nome" class='mb-0'><strong>Quitado</strong></label>
+              <label for="nome" class='mb-0'><strong>Quitado?</strong></label>
               <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{ form.quitado }}</div>
             </div>
           </div>
-      
-          <div class='col-11'>
-            <div class="form-group">
-              <label for="nome" class='mb-0'><strong>Stand</strong></label>
-              <div style="width: 100%; border-radius: 5px; height: 40px; align-items: center; display: flex;">{{form.stand }}</div>
-            </div>
-          </div>
         </div>
-
-      <button style='color:white' type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+        
+      <div class="d-flex justify-content-center mt-5">
+        <button style='color:white; border-radius: 50px; width: 200px; ' type="submit" class="btn btn-primary"><STRONG>ENVIAR</STRONG></button>
+      </div>
+      
     </form>
   </div>
 {% endblock %}

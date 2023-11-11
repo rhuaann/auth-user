@@ -1,8 +1,6 @@
 from decimal import Decimal
-
 from django import forms
-
-from .models import Stand
+from stand.models import Stand
 
 
 class StandForm(forms.ModelForm):

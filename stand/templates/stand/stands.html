@@ -4,7 +4,125 @@
 
 {% block content %}
 <div class="mt-5">
-    <h2>Lista de Stands</h2>
+    <div class="d-flex align-items-center justify-content-between">
+        <h2>Lista de Stands</h2>
+        <div class="">
+            <a style='color:white; border-radius: 50px; font-size: 12px;' href="{% url 'stand_criar' %}" class="btn btn-primary"><strong><i class="fas fa-plus"></i> ADICIONAR</strong></a>
+        </div>
+    </div>
+
+    <form method="GET" action="{% url 'filtro_localizacoes_e_valores' %}">
+        <div class="row col-12 d-flex justify-content-center mb-3">
+            <div class="col-4">
+                <div class="d-flex align-items-center"style="border: #7E121D 1px solid; height: 40px; border-radius:10px">
+                    <input type="text" name="termo_localizacao" id="termo_localizacao" value="{{ termo_localizacao }}" placeholder="Localização" class="ml-2" style="outline: none; border:none">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="d-flex align-items-center"style="border: #7E121D 1px solid; height: 40px; border-radius:10px">
+                    <input type="text" name="termo_valor" id="termo_valor" value="{{ termo_valor }}" placeholder="Valor" class="ml-2" style="outline: none; border:none">
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="d-flex justify-content-center align-items-center"style="border: #7E121D 1px solid; height: 40px; border-radius:10px">
+                    <select name="ordenacao" id="ordenacao" style="outline: none; border:none">
+                        <option>Todos</option>
+                        <option value="asc" {% if ordenacao == 'valor' %}selected{% endif %}>Crescente</option>
+                        <option value="desc" {% if ordenacao == '-valor' %}selected{% endif %}>Decrescente</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="d-flex align-items-center"style="height: 40px;">
+                    <button class="btn btn-primary text-white" style="width: 150px; border-radius: 50px;" type="submit">Filtrar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <table class="table">
+        
+        <thead class="thead-light">
+            
+            <tr>
+                <th scope="col">Localização</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Ações</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            {% for item in itens %}
+            <tr>
+                <td>{{ item.localizacao }}</td>
+                <td>{{ item.valor }}</td>
+                <td>
+                    <a href="{% url 'stand_editar' pk=item.pk %}"><i class="fas fa-edit"></i></a>
+                    <a href="{% url 'stand_remover' pk=item.pk %}"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{% url 'stand_detalhe' pk=item.pk %}"><i class="fas fa-search"></i></a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="3">
+                <p>Nenhum filtro aplicado.</p>
+              </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if itens.has_other_pages %}
+        <nav>
+            <ul class="pagination justify-content-center">
+                {% if itens.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">
+                            <<
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ itens.previous_page_number }}">
+                            <
+                        </a>
+                    </li>
+                {% endif %}
+    
+                {% for page_number in itens.paginator.page_range %}
+                    {% if page_number <= itens.number|add:1 and page_number >= itens.number|add:-1 %}
+                        {% if itens.number == page_number %}
+                            <li class="page-item active">
+                                <a class="page-link" href="?page={{ page_number }}">
+                                    {{ page_number }}
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_number }}">
+                                    {{ page_number }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+    
+                {% if itens.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ itens.next_page_number }}">
+                            >
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ itens.paginator.num_pages }}">
+                            >>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %} 
+
+    
+    
 
     <table class="table">
         <thead class="thead-light">
@@ -88,9 +206,5 @@
     {% endif %}
     
     <span class="br-divider my-3"></span>
-
-    <div class="mb-3">
-        <a style='color:white' href="{% url 'stand_criar' %}" class="btn btn-primary">Adicionar Novo</a>
-    </div>
 </div>
 {% endblock %}

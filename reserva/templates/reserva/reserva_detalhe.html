@@ -2,64 +2,63 @@
 
 {% block content %}
 
-<table class="bg-gray-2">
-    
-    <h1>Visualizar Reserva</h1>
-    
-    <div>
-        <p class="text-weight-bold">Dados da Reserva:</p>
-  
-        <section class="container-fluid p-2x">
-          <div class="content" id="idsn30">
-            <div class="row align-items-center mb-2">
-              <div class="col-md-1 col-sm-12 text-weight-bold">CNPJ:</div>
-              <div id="cnpj-empresa" class="col-md-11 col-sm-12">{{ object.cnpj }}</div>
-            </div>
-            <div class="row align-items-center mb-2">
-              <div class="col-md-1 col-sm-12 text-weight-bold">Nome:</div>
-              <div id="nome-empresa" class="col-md-11 col-sm-12">{{ object.nome_empresa }}</div>
-            </div>
-            <div class="row align-items-center mb-2">
-              <div class="col-md-1 col-sm-12 text-weight-bold">Categoria:</div>
-              <div id="categoria-empresa" class="col-md-11 col-sm-12">{{ object.categoria_empresa }}</div>
-            </div>
-            <div class="row align-items-center mb-2">
-              <div class="col-md-1 col-sm-12 text-weight-bold">Status:</div>
-              {% if object.quitado %}
-                <div id="opcao" class="col-md-11 col-sm-12">Pagamento Efetuado</div>
-              {% else %}
-                <div id="opcao" class="col-md-11 col-sm-12">Pagamento Pendente</div>
-              {% endif %}
-            </div>
-            <div class="row align-items-center mb-2">
-                <div class="col-md-1 col-sm-12 text-weight-bold">Stand:</div>
-                <div id="opcao" class="col-md-11 col-sm-12">{{ object.stand }}</div>
-              </div>
-        </section>
-        
-        <section class="container-fluid pt-2x">
-          <div class="row justify-content-between">
-              <div class="col-lg-1 col-md-1 col-12">
-                <a class="br-button block" href="{% url 'reserva_listar' %}" type="button">
-                  <i class="fas fa-chevron-left mr-1" aria-hidden="true"></i>
-                  Voltar
-                </a>
-              </div>
-          
-              <div class="col-lg-5 col-md-5 col-12 mt-3 mt-md-0">
-                <a
-                  style="text-decoration: none"
-                  href="{% url 'reserva_editar' object.pk %}"
-                  class="br-button primary block mt-3 mt-sm-0 p-0"
-                  type="button"
-                >
-                  <i class="fas fa-edit mr-1" aria-hidden="true"></i>
-                  Editar
-                </a>
-              </div>
-          </div>
-        </section>
+<div class="row col-12 d-flex justify-content-center mt-5" style="padding-left: 100px;padding-right: 100px;">
+  <h2>{{ object.nome_empresa }}</h2>
+  <hr>
+  <div class="row col-12 mt-5 d-flex justify-content-center">
+    <div class="col-6">
+      <div>
+        <strong style="">CNPJ:</strong>
+        <p class="">{{ object.cnpj_empresa }}</p>
+        <hr style="font-size: 40px;" />
+      </div>
     </div>
-</table>
+
+    <div class="col-6 text-end">
+      <div>
+        <strong style="">Categoria da Empresa:</strong>
+        <p class="">{{ object.categoria_empresa }}</p>
+        <hr style="font-size: 40px;" />
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-12 mt-5 d-flex justify-content-center">
+    <div class="col-6">
+      <div>
+        <strong style="">Status:</strong>
+        <p class="">
+
+          {% if object.quitado %}
+              Pagamento Efetuado
+          {% else %}
+              Pagamento Pendente
+          {% endif %}
+
+        </p>
+        <hr style="font-size: 40px;" />
+      </div>
+    </div>
+   
+    <div class="col-6 text-end">
+      <div>
+        <strong style="">Stand:</strong>
+        <p class="">{{ object.stand }}</p>
+        <hr style="font-size: 40px;" />
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="d-flex justify-content-around mt-5">
+    <div>
+      <a href="{% url 'reserva_listar' %}" class="btn btn-primary text-white" style="border-radius: 50px; width: 200px;"><i class="fas fa-chevron-left" aria-hidden="true"></i><strong>VOLTAR</strong></a>
+    </div>
+
+    <div>
+      <a href="{% url 'reserva_editar' object.pk %}" class="btn btn-primary text-white" style="border-radius: 50px; width: 200px;"><i class="fas fa-edit" aria-hidden="true"></i><strong>EDITAR</strong></a>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
